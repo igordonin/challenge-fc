@@ -6,7 +6,7 @@ const MenuWrapper = styled.ul`
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #666;
+  background-color: #000;
 `;
 
 const MenuLeft = styled.li`
