@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { useCityStore } from '../../store';
 
 const FlexWrapper = styled.div`
   display: flex;
@@ -41,7 +42,13 @@ const GridContainer = styled.div`
 `;
 
 const City = ({ name, className }: CityProps) => {
-  return <div className={className}>{name}</div>;
+  const { selectedCity, selectCity } = useCityStore();
+
+  return (
+    <div className={className} onClick={() => selectCity(name)}>
+      {name}
+    </div>
+  );
 };
 
 const StyledCity = styled(City)`
@@ -52,11 +59,23 @@ const StyledCity = styled(City)`
   text-align: center;
 `;
 
+const NoSelectedCity = () => {
+  return <h3>Pick a city to see the full forecast</h3>;
+};
+
+const SelectedCity = () => {
+  const { selectedCity } = useCityStore();
+  return <h3>City selected: {selectedCity}</h3>;
+};
+
 export const Forecast = () => {
+  const { selectedCity } = useCityStore();
+
   return (
     <FlexWrapper>
       <FlexMain>
-        <h3>Pick a city to see the full forecast</h3>
+        {selectedCity && <SelectedCity />}
+        {!selectedCity && <NoSelectedCity />}
       </FlexMain>
       <FlexFooter>
         <GridContainer>
