@@ -8,10 +8,11 @@ interface CityProps {
 export const City = ({ name, className }: CityProps) => {
   const { selectedCity, selectCity } = useCityStore();
 
-  const teste = selectedCity === name ? `${className} active` : className;
+  const combinedClassNames =
+    selectedCity === name ? `${className} active` : className;
 
   return (
-    <div className={teste} onClick={() => selectCity(name)}>
+    <div className={combinedClassNames} onClick={() => selectCity(name)}>
       {name}
     </div>
   );
