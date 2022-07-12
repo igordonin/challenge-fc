@@ -1,6 +1,8 @@
 import * as React from 'react';
+import { useSettingsStore } from '../store';
 
 export const Clock = () => {
+  const { hour12 } = useSettingsStore((state) => state);
   const [time, setTime] = React.useState(new Date());
 
   React.useEffect(() => {
@@ -16,7 +18,7 @@ export const Clock = () => {
     <div>
       {time.toLocaleTimeString('en-US', {
         timeStyle: 'short',
-        hour12: true,
+        hour12,
       })}
     </div>
   );
