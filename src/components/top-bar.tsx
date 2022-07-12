@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Clock } from './clock';
 
 const MenuWrapper = styled.ul`
   list-style-type: none;
@@ -28,7 +29,9 @@ export function TopBar() {
   return (
     <MenuWrapper>
       <MenuLeft>
-        <MenuLink>3:25 pm</MenuLink>
+        <MenuLink>
+          <Clock />
+        </MenuLink>
       </MenuLeft>
 
       <MenuRight>
