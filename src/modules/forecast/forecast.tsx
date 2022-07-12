@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { useCityStore } from '../../store';
+import { Cities } from '../cities/cities';
 
 const FlexWrapper = styled.div`
   display: flex;
@@ -19,8 +20,6 @@ const FlexFooter = styled.div`
   min-height: 200px;
 `;
 
-const cities = Array(16).fill('City');
-
 const GridContainer = styled.div`
   display: grid;
 
@@ -33,37 +32,6 @@ const GridContainer = styled.div`
 
   @media (min-width: 900px) {
     grid-template-columns: repeat(5, 1fr);
-  }
-`;
-
-interface CityProps {
-  name: string;
-  className?: string;
-}
-
-const City = ({ name, className }: CityProps) => {
-  const { selectedCity, selectCity } = useCityStore();
-
-  const teste = selectedCity === name ? `${className} active` : className;
-
-  return (
-    <div className={teste} onClick={() => selectCity(name)}>
-      {name}
-    </div>
-  );
-};
-
-const StyledCity = styled(City)`
-  border: 1px solid #fff;
-  border-color: #0a84ff;
-  border-radius: 5px;
-  padding: 10px;
-  text-align: center;
-
-  &.active {
-    background-color: #fff;
-    border-color: #fff;
-    color: #0a84ff;
   }
 `;
 
@@ -87,9 +55,7 @@ export const Forecast = () => {
       </FlexMain>
       <FlexFooter>
         <GridContainer>
-          {cities.map((city, index) => {
-            return <StyledCity key={`city${index}`} name={`city${index}`} />;
-          })}
+          <Cities />
         </GridContainer>
       </FlexFooter>
     </FlexWrapper>
