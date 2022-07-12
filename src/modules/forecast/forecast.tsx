@@ -19,11 +19,6 @@ const FlexFooter = styled.div`
   min-height: 200px;
 `;
 
-interface CityProps {
-  name: string;
-  className?: string;
-}
-
 const cities = Array(16).fill('City');
 
 const GridContainer = styled.div`
@@ -41,11 +36,18 @@ const GridContainer = styled.div`
   }
 `;
 
+interface CityProps {
+  name: string;
+  className?: string;
+}
+
 const City = ({ name, className }: CityProps) => {
   const { selectedCity, selectCity } = useCityStore();
 
+  const teste = selectedCity === name ? `${className} active` : className;
+
   return (
-    <div className={className} onClick={() => selectCity(name)}>
+    <div className={teste} onClick={() => selectCity(name)}>
       {name}
     </div>
   );
@@ -57,6 +59,12 @@ const StyledCity = styled(City)`
   border-radius: 5px;
   padding: 10px;
   text-align: center;
+
+  &.active {
+    background-color: #fff;
+    border-color: #fff;
+    color: #0a84ff;
+  }
 `;
 
 const NoSelectedCity = () => {
