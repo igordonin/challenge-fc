@@ -2,9 +2,15 @@ import * as React from 'react';
 import { ClockSettings, useSettingsStore } from '../modules/settings';
 import { StyledTime } from './clock.styles';
 
-export const Clock = () => {
+interface ClockProps {
+  setting?: ClockSettings;
+}
+
+export const Clock = ({ setting }: ClockProps) => {
   const { clockAmPmOr24h } = useSettingsStore((state) => state);
   const [time, setTime] = React.useState(new Date());
+
+  const clockSetting = setting || clockAmPmOr24h;
 
   React.useEffect(() => {
     const fiveSeconds = 5 * 1000;
@@ -19,7 +25,7 @@ export const Clock = () => {
     <StyledTime>
       {time.toLocaleTimeString('en-US', {
         timeStyle: 'short',
-        hour12: clockAmPmOr24h === ClockSettings.AM_PM,
+        hour12: clockSetting === ClockSettings.AM_PM,
       })}
     </StyledTime>
   );

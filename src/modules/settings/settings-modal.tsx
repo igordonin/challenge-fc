@@ -111,7 +111,7 @@ export const SettingsModal = () => {
           </ActionGroup>
 
           <ClockGroup>
-            <Clock />
+            <Clock setting={stateClockSetting} />
           </ClockGroup>
         </SettingsModalFlexWrapper>
       </ModalWrapper>
