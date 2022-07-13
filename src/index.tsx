@@ -4,17 +4,22 @@ import { App } from './app';
 import './index.css';
 import './fonts/Roboto-Regular.ttf';
 import { Forecast } from './modules/forecast';
+import { QueryClient, QueryClientProvider } from 'react-query';
+
+const queryClient = new QueryClient();
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
 root.render(
-  <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<App />}>
-        <Route path="/" element={<Forecast />} />
-      </Route>
-    </Routes>
-  </BrowserRouter>
+  <QueryClientProvider client={queryClient}>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<App />}>
+          <Route path="/" element={<Forecast />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  </QueryClientProvider>
 );
