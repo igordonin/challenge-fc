@@ -39,16 +39,32 @@ export const SearchInput = styled.input`
   background-color: #000;
   color: #fff;
   outline: none;
-  transition: width 1s, opacity 0.2s;
+  transition: visibility 0s linear 1s, width 1s, opacity 1s;
 
   &.active {
     visibility: visible;
     width: 250px;
-    opacity: 100;
+    opacity: 1;
+    transition: visibility 0s linear 0.2s, width 1s, opacity 0.1s;
   }
 `;
 
 export const SearchTrigger = styled.a`
   text-decoration: none;
   color: #fff;
+`;
+
+export const IconWrapper = styled.a`
+  display: inline-block;
+  position: relative;
+  left: -24px;
+  top: 4px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1s;
+
+  &.active {
+    visibility: visible;
+    opacity: 1;
+  }
 `;
