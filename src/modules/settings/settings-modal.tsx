@@ -10,7 +10,11 @@ import {
   ModalWrapper,
   SettingsModalFlexWrapper,
 } from './settings-modal.styles';
-import { ClockSettings, UnitSystems, useSettingsStore } from './settings-store';
+import {
+  ClockSettings,
+  MeasurementSystemSettings,
+  useSettingsStore,
+} from './settings-store';
 import { TimeSettingsButton } from './time-settings-button';
 import { UnitSystemButton } from './unit-system-button';
 
@@ -23,7 +27,8 @@ const CancelButton = () => {
 };
 
 const SaveButton = () => {
-  const { setUnitSystem, setClockAmPmOr24h } = useSettingsStore();
+  const { setMeasurementSystem: setUnitSystem, setClockAmPmOr24h } =
+    useSettingsStore();
 
   return (
     <StyledButton onClick={() => {}}>
@@ -35,8 +40,8 @@ const SaveButton = () => {
 export const SettingsModal = () => {
   const {
     clockAmPmOr24h: initialHour12,
-    unitSystem: initialUnitSystem,
-    setUnitSystem,
+    measurementSystem: initialUnitSystem,
+    setMeasurementSystem: setUnitSystem,
     setClockAmPmOr24h,
   } = useSettingsStore();
 
@@ -56,18 +61,24 @@ export const SettingsModal = () => {
           <ConfigGroup>
             <h2>Units</h2>
             <UnitSystemButton
-              unit={UnitSystems.IMPERIAL}
-              onClick={() => setStateUnitSystem(UnitSystems.IMPERIAL)}
+              unit={MeasurementSystemSettings.IMPERIAL}
+              onClick={() =>
+                setStateUnitSystem(MeasurementSystemSettings.IMPERIAL)
+              }
               currentUnit={stateUnitSystem}
             />
             <UnitSystemButton
-              unit={UnitSystems.METRIC}
-              onClick={() => setStateUnitSystem(UnitSystems.METRIC)}
+              unit={MeasurementSystemSettings.METRIC}
+              onClick={() =>
+                setStateUnitSystem(MeasurementSystemSettings.METRIC)
+              }
               currentUnit={stateUnitSystem}
             />
             <UnitSystemButton
-              unit={UnitSystems.STANDARD}
-              onClick={() => setStateUnitSystem(UnitSystems.STANDARD)}
+              unit={MeasurementSystemSettings.STANDARD}
+              onClick={() =>
+                setStateUnitSystem(MeasurementSystemSettings.STANDARD)
+              }
               currentUnit={stateUnitSystem}
             />
           </ConfigGroup>

@@ -1,6 +1,6 @@
 import create from 'zustand';
 
-export enum UnitSystems {
+export enum MeasurementSystemSettings {
   IMPERIAL = 'Imperial',
   METRIC = 'Metric',
   STANDARD = 'Standard',
@@ -13,14 +13,14 @@ export enum ClockSettings {
 
 interface SettingsStore {
   clockAmPmOr24h: ClockSettings;
-  unitSystem: UnitSystems;
+  measurementSystem: MeasurementSystemSettings;
   setClockAmPmOr24h: (clockAmPmOr24h: ClockSettings) => void;
-  setUnitSystem: (unitSystem: UnitSystems) => void;
+  setMeasurementSystem: (measurementSystem: MeasurementSystemSettings) => void;
 }
 
 export const useSettingsStore = create<SettingsStore>((set) => ({
   clockAmPmOr24h: ClockSettings.AM_PM,
-  unitSystem: UnitSystems.IMPERIAL,
+  measurementSystem: MeasurementSystemSettings.IMPERIAL,
   setClockAmPmOr24h: (clockAmPmOr24h: ClockSettings) =>
     set((state: SettingsStore): SettingsStore => {
       return {
@@ -28,11 +28,11 @@ export const useSettingsStore = create<SettingsStore>((set) => ({
         clockAmPmOr24h,
       };
     }),
-  setUnitSystem: (unitSystem: UnitSystems) => {
+  setMeasurementSystem: (unitSystem: MeasurementSystemSettings) => {
     set((state: SettingsStore): SettingsStore => {
       return {
         ...state,
-        unitSystem,
+        measurementSystem: unitSystem,
       };
     });
   },

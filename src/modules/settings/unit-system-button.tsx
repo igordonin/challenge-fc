@@ -1,9 +1,9 @@
 import { ButtonText, StyledButton } from './settings-button.styles';
-import { UnitSystems, useSettingsStore } from './settings-store';
+import { MeasurementSystemSettings, useSettingsStore } from './settings-store';
 
 interface UnitSystemButtonProps {
-  unit: UnitSystems;
-  currentUnit: UnitSystems;
+  unit: MeasurementSystemSettings;
+  currentUnit: MeasurementSystemSettings;
   onClick: () => void;
 }
 
