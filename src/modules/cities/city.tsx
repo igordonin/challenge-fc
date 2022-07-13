@@ -1,19 +1,18 @@
 import { useCityStore } from './city-store';
+import { CityButton } from './city.styles';
 
 interface CityProps {
   name: string;
-  className?: string;
 }
 
-export const City = ({ name, className }: CityProps) => {
+export const City = ({ name }: CityProps) => {
   const { selectedCity, selectCity } = useCityStore();
 
-  const combinedClassNames =
-    selectedCity === name ? `${className} active` : className;
+  const className = selectedCity === name ? 'active' : '';
 
   return (
-    <div className={combinedClassNames} onClick={() => selectCity(name)}>
+    <CityButton className={className} onClick={() => selectCity(name)}>
       {name}
-    </div>
+    </CityButton>
   );
 };
