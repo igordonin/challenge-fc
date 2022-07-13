@@ -22,11 +22,11 @@ export const StyledButton = styled.button`
   }
 `;
 
-interface UnitButtonProps {
+interface UnitSystemButtonProps {
   unit: UnitSystems;
 }
 
-export const UnitSystemButton = ({ unit }: UnitButtonProps) => {
+export const UnitSystemButton = ({ unit }: UnitSystemButtonProps) => {
   const { unitSystem, setUnitSystem } = useSettingsStore();
 
   const className = unitSystem === unit ? 'active' : '';
