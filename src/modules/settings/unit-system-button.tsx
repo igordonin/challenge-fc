@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { UnitSystems, useSettingsStore } from '../../store';
+import { UnitSystems, useSettingsStore } from './settings-store';
 
 const ButtonText = styled.h3`
   margin: 0px;

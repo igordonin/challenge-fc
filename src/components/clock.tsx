@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useSettingsStore } from '../store';
+import { useSettingsStore } from '../modules/settings';
 import { StyledTime } from './clock.styles';
 
 export const Clock = () => {

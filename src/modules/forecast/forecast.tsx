@@ -1,4 +1,4 @@
-import { useCityStore } from '../../store';
+import { useCityStore } from '../cities';
 import { Cities } from '../cities/cities';
 import {
   FlexFooter,

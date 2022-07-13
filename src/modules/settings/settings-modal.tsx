@@ -1,4 +1,3 @@
-import { UnitSystems } from '../../store';
 import { Clock } from '../../components/clock';
 import {
   ConfigGroup,
@@ -7,6 +6,7 @@ import {
   ModalWrapper,
   SettingsModalFlexWrapper,
 } from './settings-modal.styles';
+import { UnitSystems } from './settings-store';
 import { UnitSystemButton } from './unit-system-button';
 
 export const SettingsModal = () => {

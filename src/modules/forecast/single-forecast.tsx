@@ -1,5 +1,5 @@
-import { useCityStore } from '../../store';
 import { ReactComponent as SunsetIcon } from '../../assets/weather-sunset.svg';
+import { useCityStore } from '../cities';
 import {
   FlexContainer,
   FlexItem,

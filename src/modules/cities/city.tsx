@@ -1,4 +1,4 @@
-import { useCityStore } from '../../store';
+import { useCityStore } from './city-store';
 
 interface CityProps {
   name: string;
