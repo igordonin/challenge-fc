@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useSettingsStore } from '../store';
+import { StyledTime } from './clock.styles';
 
 export const Clock = () => {
   const { hour12 } = useSettingsStore((state) => state);
@@ -15,11 +16,11 @@ export const Clock = () => {
   });
 
   return (
-    <div>
+    <StyledTime>
       {time.toLocaleTimeString('en-US', {
         timeStyle: 'short',
         hour12,
       })}
-    </div>
+    </StyledTime>
   );
 };

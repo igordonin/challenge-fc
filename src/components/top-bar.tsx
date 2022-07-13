@@ -1,45 +1,31 @@
-import styled from 'styled-components';
 import { Clock } from './clock';
-
-const MenuWrapper = styled.ul`
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #000;
-`;
-
-const MenuLeft = styled.li`
-  float: left;
-`;
-
-const MenuRight = styled.li`
-  float: right;
-`;
-
-const MenuLink = styled.a`
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-`;
+import {
+  MenuItem,
+  MenuLeft,
+  MenuRight,
+  MenuText,
+  MenuWrapper,
+} from './top-bar.styles';
 
 export function TopBar() {
   return (
     <MenuWrapper>
       <MenuLeft>
-        <MenuLink>
+        <MenuItem>
           <Clock />
-        </MenuLink>
+        </MenuItem>
       </MenuLeft>
 
       <MenuRight>
-        <MenuLink>Settings</MenuLink>
+        <MenuItem>
+          <MenuText>Settings</MenuText>
+        </MenuItem>
       </MenuRight>
 
       <MenuRight>
-        <MenuLink>Search</MenuLink>
+        <MenuItem>
+          <MenuText>Search</MenuText>
+        </MenuItem>
       </MenuRight>
     </MenuWrapper>
   );
