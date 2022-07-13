@@ -12,7 +12,7 @@ import {
 } from './top-bar.styles';
 import { ReactComponent as CloseIcon } from '../assets/close-circle.svg';
 
-export function TopBar() {
+export const TopBar = () => {
   const searchInputEl = React.useRef<HTMLInputElement>(null);
   const clearSearchEl = React.useRef<HTMLAnchorElement>(null);
 
@@ -83,4 +83,4 @@ export function TopBar() {
       </MenuRight>
     </MenuWrapper>
   );
-}
+};
