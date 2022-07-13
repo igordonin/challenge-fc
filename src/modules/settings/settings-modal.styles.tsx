@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const ModalOverlay = styled.div`
+  display: none;
   position: fixed;
   width: 100%;
   height: 100%;
@@ -11,6 +12,10 @@ export const ModalOverlay = styled.div`
   background-color: rgba(0, 0, 0, 0);
   backdrop-filter: blur(5px);
   z-index: 2;
+
+  &.open {
+    display: block;
+  }
 `;
 
 export const ModalWrapper = styled.div`
