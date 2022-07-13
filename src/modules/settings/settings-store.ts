@@ -6,26 +6,26 @@ export enum UnitSystems {
   STANDARD = 'Standard',
 }
 
-export enum TimeSettings {
+export enum ClockSettings {
   AM_PM = 'AM/PM',
   CLOCK_24 = '24h',
 }
 
 interface SettingsStore {
-  hour12: boolean;
+  clockAmPmOr24h: ClockSettings;
   unitSystem: UnitSystems;
-  toggleHour12: () => void;
+  setClockAmPmOr24h: (clockAmPmOr24h: ClockSettings) => void;
   setUnitSystem: (unitSystem: UnitSystems) => void;
 }
 
 export const useSettingsStore = create<SettingsStore>((set) => ({
-  hour12: true,
+  clockAmPmOr24h: ClockSettings.AM_PM,
   unitSystem: UnitSystems.IMPERIAL,
-  toggleHour12: () =>
+  setClockAmPmOr24h: (clockAmPmOr24h: ClockSettings) =>
     set((state: SettingsStore): SettingsStore => {
       return {
         ...state,
-        hour12: !state.hour12,
+        clockAmPmOr24h,
       };
     }),
   setUnitSystem: (unitSystem: UnitSystems) => {

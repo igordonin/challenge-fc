@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { useSettingsStore } from '../modules/settings';
+import { ClockSettings, useSettingsStore } from '../modules/settings';
 import { StyledTime } from './clock.styles';
 
 export const Clock = () => {
-  const { hour12 } = useSettingsStore((state) => state);
+  const { clockAmPmOr24h } = useSettingsStore((state) => state);
   const [time, setTime] = React.useState(new Date());
 
   React.useEffect(() => {
@@ -19,7 +19,7 @@ export const Clock = () => {
     <StyledTime>
       {time.toLocaleTimeString('en-US', {
         timeStyle: 'short',
-        hour12,
+        hour12: clockAmPmOr24h === ClockSettings.AM_PM,
       })}
     </StyledTime>
   );

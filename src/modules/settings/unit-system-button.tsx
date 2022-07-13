@@ -3,15 +3,19 @@ import { UnitSystems, useSettingsStore } from './settings-store';
 
 interface UnitSystemButtonProps {
   unit: UnitSystems;
+  currentUnit: UnitSystems;
+  onClick: () => void;
 }
 
-export const UnitSystemButton = ({ unit }: UnitSystemButtonProps) => {
-  const { unitSystem, setUnitSystem } = useSettingsStore();
-
-  const className = unitSystem === unit ? 'active' : '';
+export const UnitSystemButton = ({
+  unit,
+  currentUnit,
+  onClick,
+}: UnitSystemButtonProps) => {
+  const className = currentUnit === unit ? 'active' : '';
 
   return (
-    <StyledButton onClick={() => setUnitSystem(unit)} className={className}>
+    <StyledButton onClick={onClick} className={className}>
       <ButtonText>{unit}</ButtonText>
     </StyledButton>
   );

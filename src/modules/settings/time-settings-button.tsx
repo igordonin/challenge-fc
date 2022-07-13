@@ -1,22 +1,21 @@
 import { ButtonText, StyledButton } from './settings-button.styles';
-import { TimeSettings, useSettingsStore } from './settings-store';
+import { ClockSettings } from './settings-store';
 
 interface TimeSettingsButton {
-  timeSetting: TimeSettings;
+  timeSetting: ClockSettings;
+  currentTimeSetting: ClockSettings;
+  onClick: () => void;
 }
 
-export const TimeSettingsButton = ({ timeSetting }: TimeSettingsButton) => {
-  const { hour12, toggleHour12 } = useSettingsStore();
-
-  const timeSettingMappings = {
-    'AM/PM': true,
-    '24h': false,
-  };
-
-  const className = timeSettingMappings[timeSetting] === hour12 ? 'active' : '';
+export const TimeSettingsButton = ({
+  timeSetting,
+  currentTimeSetting,
+  onClick,
+}: TimeSettingsButton) => {
+  const className = timeSetting === currentTimeSetting ? 'active' : '';
 
   return (
-    <StyledButton onClick={() => toggleHour12()} className={className}>
+    <StyledButton onClick={onClick} className={className}>
       <ButtonText>{timeSetting}</ButtonText>
     </StyledButton>
   );
