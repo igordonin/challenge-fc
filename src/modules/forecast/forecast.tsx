@@ -6,14 +6,10 @@ import {
   FlexWrapper,
   GridContainer,
 } from './forecast.styles';
+import { SingleForecast } from './single-forecast';
 
 const NoSelectedCity = () => {
   return <h3>Pick a city to see the full forecast</h3>;
-};
-
-const SelectedCity = () => {
-  const { selectedCity } = useCityStore();
-  return <h3>City selected: {selectedCity}</h3>;
 };
 
 export const Forecast = () => {
@@ -22,7 +18,7 @@ export const Forecast = () => {
   return (
     <FlexWrapper>
       <FlexMain>
-        {selectedCity && <SelectedCity />}
+        {selectedCity && <SingleForecast />}
         {!selectedCity && <NoSelectedCity />}
       </FlexMain>
       <FlexFooter>
