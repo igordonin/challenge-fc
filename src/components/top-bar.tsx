@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { Clock } from './clock';
 import {
   MenuItem,
@@ -5,9 +6,21 @@ import {
   MenuRight,
   MenuText,
   MenuWrapper,
+  SearchInput,
+  SearchTrigger,
 } from './top-bar.styles';
 
 export function TopBar() {
+  const searchInputEl = React.useRef<HTMLInputElement>(null);
+
+  const showSearchInput = () => {
+    if (!searchInputEl.current) {
+      return;
+    }
+
+    searchInputEl.current.className += ' active';
+  };
+
   return (
     <MenuWrapper>
       <MenuLeft>
@@ -24,7 +37,22 @@ export function TopBar() {
 
       <MenuRight>
         <MenuItem>
-          <MenuText>Search</MenuText>
+          <MenuText>
+            <SearchInput
+              type={'text'}
+              placeholder={'Search'}
+              ref={searchInputEl}
+            />
+            <SearchTrigger
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                showSearchInput();
+              }}
+            >
+              Search
+            </SearchTrigger>
+          </MenuText>
         </MenuItem>
       </MenuRight>
     </MenuWrapper>

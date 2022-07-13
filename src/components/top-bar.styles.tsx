@@ -26,3 +26,29 @@ export const MenuItem = styled.div`
 export const MenuText = styled.h2`
   margin: 0;
 `;
+
+export const SearchInput = styled.input`
+  visibility: hidden;
+  opacity: 0;
+  position: relative;
+  left: 80px;
+  font-size: 24px;
+  width: 10px;
+  border: 1px solid #0a84ff;
+  border-radius: 5px;
+  background-color: #000;
+  color: #fff;
+  outline: none;
+  transition: width 1s, opacity 0.2s;
+
+  &.active {
+    visibility: visible;
+    width: 250px;
+    opacity: 100;
+  }
+`;
+
+export const SearchTrigger = styled.a`
+  text-decoration: none;
+  color: #fff;
+`;
