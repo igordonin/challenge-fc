@@ -1,13 +1,25 @@
+import { useQuery } from 'react-query';
 import { City } from './city';
-
-const cities = Array(18).fill('City');
+import { fetchCities } from './city.queries';
 
 export const Cities = () => {
+  const { data, isLoading, isError } = useQuery(['cities'], fetchCities);
+
+  if (isLoading) {
+    return <div>Loading cities...</div>;
+  }
+
+  if (isError) {
+    return <div>Unexpected error. Please try again soon.</div>;
+  }
+
+  const cities = data || [];
+
   return (
     <>
-      {cities.map((city, index) => {
-        return <City key={`city${index}`} name={`city${index}`} />;
-      })}
+      {cities.map((city) => (
+        <City key={city.name} city={city} />
+      ))}
     </>
   );
 };
