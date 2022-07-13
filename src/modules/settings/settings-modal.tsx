@@ -7,6 +7,7 @@ import {
   SettingsModalFlexWrapper,
 } from './settings-modal.styles';
 import { UnitSystems } from './settings-store';
+import { TimeSettingsButton } from './time-settings-button';
 import { UnitSystemButton } from './unit-system-button';
 
 export const SettingsModal = () => {
@@ -25,10 +26,13 @@ export const SettingsModal = () => {
             </div>
           </ConfigGroup>
 
-          <div>
+          <ConfigGroup>
             <h2>Time</h2>
-            AM/PM | 24h
-          </div>
+            <div>
+              <TimeSettingsButton timeSetting="AM/PM" />
+              <TimeSettingsButton timeSetting="24h" />
+            </div>
+          </ConfigGroup>
 
           <div>Cancel | Save</div>
 
