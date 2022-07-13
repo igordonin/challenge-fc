@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { App } from './app';
 import './index.css';
 import './fonts/Roboto-Regular.ttf';
-import { Forecast } from './modules/forecast/forecast';
+import { Forecast } from './modules/forecast';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

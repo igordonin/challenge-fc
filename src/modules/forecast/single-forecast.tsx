@@ -1,4 +1,3 @@
-import { ReactComponent as SunsetIcon } from '../../assets/weather-sunset.svg';
 import { useCityStore } from '../cities';
 import {
   FlexContainer,
@@ -7,6 +6,7 @@ import {
   Relative,
   Title,
 } from './single-forecast.styles';
+import { ReactComponent as SunsetIcon } from '../../assets/weather-sunset.svg';
 
 const Details = () => {
   return (

@@ -10,8 +10,8 @@ import {
   SearchInput,
   MenuLink,
 } from './top-bar.styles';
-import { ReactComponent as CloseIcon } from '../assets/close-circle.svg';
 import { useSettingsStore } from '../modules/settings';
+import { ReactComponent as CloseIcon } from '../assets/close-circle.svg';
 
 export const TopBar = () => {
   const searchInputEl = React.useRef<HTMLInputElement>(null);

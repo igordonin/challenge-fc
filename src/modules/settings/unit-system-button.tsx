@@ -1,5 +1,5 @@
 import { ButtonText, StyledButton } from './settings-button.styles';
-import { MeasurementSystemSettings, useSettingsStore } from './settings-store';
+import { MeasurementSystemSettings } from './settings-store';
 
 interface UnitSystemButtonProps {
   unit: MeasurementSystemSettings;

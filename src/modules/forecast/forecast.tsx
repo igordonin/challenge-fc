@@ -1,5 +1,5 @@
 import { useCityStore } from '../cities';
-import { Cities } from '../cities/cities';
+import { Cities } from '../cities';
 import {
   FlexFooter,
   FlexMain,
