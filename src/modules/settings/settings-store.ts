@@ -28,11 +28,11 @@ export const useSettingsStore = create<SettingsStore>((set) => ({
         clockAmPmOr24h,
       };
     }),
-  setMeasurementSystem: (unitSystem: MeasurementSystemSettings) => {
+  setMeasurementSystem: (measurementSystem: MeasurementSystemSettings) => {
     set((state: SettingsStore): SettingsStore => {
       return {
         ...state,
-        measurementSystem: unitSystem,
+        measurementSystem,
       };
     });
   },
