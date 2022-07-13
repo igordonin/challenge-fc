@@ -9,7 +9,7 @@ import {
 import { SingleForecast } from './single-forecast';
 
 const NoSelectedCity = () => {
-  return <h3>Pick a city to see the full forecast</h3>;
+  return <h1>Pick a city to see the full forecast</h1>;
 };
 
 export const Forecast = () => {
