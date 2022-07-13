@@ -6,6 +6,11 @@ export enum UnitSystems {
   STANDARD = 'Standard',
 }
 
+export enum TimeSettings {
+  AM_PM = 'AM/PM',
+  CLOCK_24 = '24h',
+}
+
 interface SettingsStore {
   hour12: boolean;
   unitSystem: UnitSystems;

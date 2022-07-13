@@ -1,8 +1,8 @@
 import { ButtonText, StyledButton } from './settings-button.styles';
-import { useSettingsStore } from './settings-store';
+import { TimeSettings, useSettingsStore } from './settings-store';
 
 interface TimeSettingsButton {
-  timeSetting: 'AM/PM' | '24h';
+  timeSetting: TimeSettings;
 }
 
 export const TimeSettingsButton = ({ timeSetting }: TimeSettingsButton) => {

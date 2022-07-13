@@ -1,14 +1,33 @@
 import { Clock } from '../../components/clock';
+import { ButtonText, StyledButton } from './settings-button.styles';
 import {
+  ActionGroup,
+  ClockGroup,
   ConfigGroup,
   ModalOverlay,
   ModalTitle,
   ModalWrapper,
   SettingsModalFlexWrapper,
 } from './settings-modal.styles';
-import { UnitSystems } from './settings-store';
+import { TimeSettings, UnitSystems } from './settings-store';
 import { TimeSettingsButton } from './time-settings-button';
 import { UnitSystemButton } from './unit-system-button';
+
+const CancelButton = () => {
+  return (
+    <StyledButton onClick={() => {}}>
+      <ButtonText>Cancel</ButtonText>
+    </StyledButton>
+  );
+};
+
+const SaveButton = () => {
+  return (
+    <StyledButton onClick={() => {}}>
+      <ButtonText>Save</ButtonText>
+    </StyledButton>
+  );
+};
 
 export const SettingsModal = () => {
   return (
@@ -19,24 +38,25 @@ export const SettingsModal = () => {
 
           <ConfigGroup>
             <h2>Units</h2>
-            <div>
-              <UnitSystemButton unit={UnitSystems.IMPERIAL} />
-              <UnitSystemButton unit={UnitSystems.METRIC} />
-              <UnitSystemButton unit={UnitSystems.STANDARD} />
-            </div>
+            <UnitSystemButton unit={UnitSystems.IMPERIAL} />
+            <UnitSystemButton unit={UnitSystems.METRIC} />
+            <UnitSystemButton unit={UnitSystems.STANDARD} />
           </ConfigGroup>
 
           <ConfigGroup>
             <h2>Time</h2>
-            <div>
-              <TimeSettingsButton timeSetting="AM/PM" />
-              <TimeSettingsButton timeSetting="24h" />
-            </div>
+            <TimeSettingsButton timeSetting={TimeSettings.AM_PM} />
+            <TimeSettingsButton timeSetting={TimeSettings.CLOCK_24} />
           </ConfigGroup>
 
-          <div>Cancel | Save</div>
+          <ActionGroup>
+            <CancelButton />
+            <SaveButton />
+          </ActionGroup>
 
-          <Clock />
+          <ClockGroup>
+            <Clock />
+          </ClockGroup>
         </SettingsModalFlexWrapper>
       </ModalWrapper>
     </ModalOverlay>

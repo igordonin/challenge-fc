@@ -41,3 +41,15 @@ export const ConfigGroup = styled.div`
   width: 100%;
   text-align: center;
 `;
+
+export const ActionGroup = styled.div`
+  width: 100%;
+  text-align: center;
+  margin-top: 60px;
+`;
+
+export const ClockGroup = styled.div`
+  width: 100%;
+  text-align: right;
+  margin-top: 20px;
+`;
