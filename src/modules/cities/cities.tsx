@@ -1,6 +1,6 @@
 import { StyledCity } from './cities.styles';
 
-const cities = Array(16).fill('City');
+const cities = Array(18).fill('City');
 
 export const Cities = () => {
   return (
