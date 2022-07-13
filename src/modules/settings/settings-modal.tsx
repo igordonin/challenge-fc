@@ -18,42 +18,50 @@ import {
 import { TimeSettingsButton } from './time-settings-button';
 import { UnitSystemButton } from './unit-system-button';
 
-const CancelButton = () => {
-  return (
-    <StyledButton onClick={() => {}}>
-      <ButtonText>Cancel</ButtonText>
-    </StyledButton>
-  );
-};
+interface ActionButtonProps {
+  label: string;
+  onClick: () => void;
+}
 
-const SaveButton = () => {
-  const { setMeasurementSystem: setUnitSystem, setClockAmPmOr24h } =
-    useSettingsStore();
-
+const ActionButton = ({ label, onClick }: ActionButtonProps) => {
   return (
-    <StyledButton onClick={() => {}}>
-      <ButtonText>Save</ButtonText>
+    <StyledButton onClick={() => onClick()}>
+      <ButtonText>{label}</ButtonText>
     </StyledButton>
   );
 };
 
 export const SettingsModal = () => {
   const {
-    clockAmPmOr24h: initialHour12,
-    measurementSystem: initialUnitSystem,
-    setMeasurementSystem: setUnitSystem,
+    isModalOpen,
+    clockAmPmOr24h: initialClockSetting,
+    measurementSystem: initialMeasurementSetting,
+    toggleModal,
+    setMeasurementSystem,
     setClockAmPmOr24h,
   } = useSettingsStore();
 
-  const [stateUnitSystem, setStateUnitSystem] =
-    React.useState(initialUnitSystem);
+  const [stateMeasurementSetting, setStateMeasurementSetting] = React.useState(
+    initialMeasurementSetting
+  );
 
-  const [stateTimeSetting, setStateTimeSetting] = React.useState(initialHour12);
+  const [stateClockSetting, setStateClockSetting] =
+    React.useState(initialClockSetting);
 
-  const onSave = () => {};
+  const onSave = () => {
+    setMeasurementSystem(stateMeasurementSetting);
+    setClockAmPmOr24h(stateClockSetting);
+    toggleModal();
+  };
+
+  const onCancel = () => {
+    toggleModal();
+  };
+
+  const modalClassName = isModalOpen ? 'open' : '';
 
   return (
-    <ModalOverlay>
+    <ModalOverlay className={modalClassName}>
       <ModalWrapper>
         <SettingsModalFlexWrapper>
           <ModalTitle>Settings</ModalTitle>
@@ -63,23 +71,23 @@ export const SettingsModal = () => {
             <UnitSystemButton
               unit={MeasurementSystemSettings.IMPERIAL}
               onClick={() =>
-                setStateUnitSystem(MeasurementSystemSettings.IMPERIAL)
+                setStateMeasurementSetting(MeasurementSystemSettings.IMPERIAL)
               }
-              currentUnit={stateUnitSystem}
+              currentUnit={stateMeasurementSetting}
             />
             <UnitSystemButton
               unit={MeasurementSystemSettings.METRIC}
               onClick={() =>
-                setStateUnitSystem(MeasurementSystemSettings.METRIC)
+                setStateMeasurementSetting(MeasurementSystemSettings.METRIC)
               }
-              currentUnit={stateUnitSystem}
+              currentUnit={stateMeasurementSetting}
             />
             <UnitSystemButton
               unit={MeasurementSystemSettings.STANDARD}
               onClick={() =>
-                setStateUnitSystem(MeasurementSystemSettings.STANDARD)
+                setStateMeasurementSetting(MeasurementSystemSettings.STANDARD)
               }
-              currentUnit={stateUnitSystem}
+              currentUnit={stateMeasurementSetting}
             />
           </ConfigGroup>
 
@@ -87,19 +95,19 @@ export const SettingsModal = () => {
             <h2>Time</h2>
             <TimeSettingsButton
               timeSetting={ClockSettings.AM_PM}
-              onClick={() => setStateTimeSetting(ClockSettings.AM_PM)}
-              currentTimeSetting={stateTimeSetting}
+              onClick={() => setStateClockSetting(ClockSettings.AM_PM)}
+              currentTimeSetting={stateClockSetting}
             />
             <TimeSettingsButton
               timeSetting={ClockSettings.CLOCK_24}
-              onClick={() => setStateTimeSetting(ClockSettings.CLOCK_24)}
-              currentTimeSetting={stateTimeSetting}
+              onClick={() => setStateClockSetting(ClockSettings.CLOCK_24)}
+              currentTimeSetting={stateClockSetting}
             />
           </ConfigGroup>
 
           <ActionGroup>
-            <CancelButton />
-            <SaveButton />
+            <ActionButton label={'Cancel'} onClick={onCancel} />
+            <ActionButton label={'Save'} onClick={onSave} />
           </ActionGroup>
 
           <ClockGroup>
