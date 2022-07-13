@@ -49,7 +49,7 @@ export const SearchInput = styled.input`
   }
 `;
 
-export const SearchTrigger = styled.a`
+export const MenuLink = styled.a`
   text-decoration: none;
   color: #fff;
 `;

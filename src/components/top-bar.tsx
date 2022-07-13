@@ -8,9 +8,10 @@ import {
   MenuText,
   MenuWrapper,
   SearchInput,
-  SearchTrigger,
+  MenuLink,
 } from './top-bar.styles';
 import { ReactComponent as CloseIcon } from '../assets/close-circle.svg';
+import { useSettingsStore } from '../modules/settings';
 
 export const TopBar = () => {
   const searchInputEl = React.useRef<HTMLInputElement>(null);
@@ -50,6 +51,13 @@ export const TopBar = () => {
     );
   };
 
+  const { toggleModal } = useSettingsStore();
+
+  const onSettingsClick = (e: React.BaseSyntheticEvent) => {
+    e.preventDefault();
+    toggleModal();
+  };
+
   return (
     <MenuWrapper>
       <MenuLeft>
@@ -60,7 +68,11 @@ export const TopBar = () => {
 
       <MenuRight>
         <MenuItem>
-          <MenuText>Settings</MenuText>
+          <MenuText>
+            <MenuLink href="#" onClick={onSettingsClick}>
+              Settings
+            </MenuLink>
+          </MenuText>
         </MenuItem>
       </MenuRight>
 
@@ -72,9 +84,9 @@ export const TopBar = () => {
               placeholder={'Search'}
               ref={searchInputEl}
             />
-            <SearchTrigger href="#" onClick={showSearchInput}>
+            <MenuLink href="#" onClick={showSearchInput}>
               Search
-            </SearchTrigger>
+            </MenuLink>
             <IconWrapper ref={clearSearchEl}>
               <CloseIcon fill="#fff" href="#" onClick={hideSearchInput} />
             </IconWrapper>
