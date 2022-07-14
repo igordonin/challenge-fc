@@ -9,6 +9,7 @@ import {
   GridContainer,
 } from './landing-page.styles';
 import { SingleForecast } from '../modules/forecast/single-forecast';
+import { Outlet } from 'react-router-dom';
 
 const NoSelectedCity = () => {
   return <h1>Pick a city to see the full forecast</h1>;
@@ -16,7 +17,7 @@ const NoSelectedCity = () => {
 
 const LoadingCities = () => <h1>Loading Cities</h1>;
 
-export const Forecast = () => {
+export const LandingPage = () => {
   const { selectedCity, cities, setCities } = useCityStore();
 
   React.useEffect(() => {
@@ -31,7 +32,7 @@ export const Forecast = () => {
   return (
     <FlexWrapper>
       <FlexMain>
-        {selectedCity && <SingleForecast />}
+        {selectedCity && <Outlet />}
         {!selectedCity && <NoSelectedCity />}
       </FlexMain>
       <FlexFooter>

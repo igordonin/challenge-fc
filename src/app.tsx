@@ -1,5 +1,6 @@
 import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
+import { LandingPage } from './components/landing-page';
 import { TopBar } from './components/top-bar';
 import { SettingsModal } from './modules/settings';
 
@@ -24,7 +25,7 @@ export const App = (): JSX.Element => {
         <TopBar />
       </TopContainer>
       <BottomContainer>
-        <Outlet />
+        <LandingPage />
       </BottomContainer>
       <SettingsModal />
     </>

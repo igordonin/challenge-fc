@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { App } from './app';
 import './index.css';
 import './fonts/Roboto-Regular.ttf';
-import { Forecast } from './modules/forecast';
+import { LandingPage, SingleForecast } from './modules/forecast';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
 const queryClient = new QueryClient();
@@ -17,7 +17,7 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />}>
-          <Route path="/" element={<Forecast />} />
+          <Route path="/" element={<SingleForecast />} />
         </Route>
       </Routes>
     </BrowserRouter>
