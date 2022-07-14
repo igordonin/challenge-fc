@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { ClockSettings, useSettingsStore } from '../modules/settings';
+import { convertToTime } from '../utils/date-fns';
 import { StyledTime } from './clock.styles';
 
 interface ClockProps {
@@ -8,25 +9,18 @@ interface ClockProps {
 
 export const Clock = ({ setting }: ClockProps) => {
   const { clockAmPmOr24h } = useSettingsStore((state) => state);
-  const [time, setTime] = React.useState(new Date());
+  const [date, setDate] = React.useState(new Date());
 
   const clockSetting = setting || clockAmPmOr24h;
 
   React.useEffect(() => {
     const fiveSeconds = 5 * 1000;
-    const ticker = setInterval(() => setTime(new Date()), fiveSeconds);
+    const ticker = setInterval(() => setDate(new Date()), fiveSeconds);
 
     return () => {
       clearInterval(ticker);
     };
   });
 
-  return (
-    <StyledTime>
-      {time.toLocaleTimeString('en-US', {
-        timeStyle: 'short',
-        hour12: clockSetting === ClockSettings.AM_PM,
-      })}
-    </StyledTime>
-  );
+  return <StyledTime>{convertToTime(date, { clockSetting })}</StyledTime>;
 };
