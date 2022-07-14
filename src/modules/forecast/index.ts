@@ -1,2 +1,2 @@
-export * from '../../components/forecast';
+export * from '../../components/landing-page';
 export * from './single-forecast';

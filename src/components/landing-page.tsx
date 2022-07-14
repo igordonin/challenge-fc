@@ -7,7 +7,7 @@ import {
   FlexMain,
   FlexWrapper,
   GridContainer,
-} from './forecast.styles';
+} from './landing-page.styles';
 import { SingleForecast } from '../modules/forecast/single-forecast';
 
 const NoSelectedCity = () => {
