@@ -55,6 +55,8 @@ export const SettingsModal = () => {
   };
 
   const onCancel = () => {
+    setStateMeasurementSetting(initialMeasurementSetting);
+    setStateClockSetting(initialClockSetting);
     toggleModal();
   };
 
