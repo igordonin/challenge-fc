@@ -1,9 +1,9 @@
 import { useQuery } from 'react-query';
 import { City } from './city';
-import { fetchCities } from './city.queries';
+import { fetchRandomCities } from './city.queries';
 
 export const Cities = () => {
-  const { data, isLoading, isError } = useQuery(['cities'], fetchCities);
+  const { data, isLoading, isError } = useQuery(['cities'], fetchRandomCities);
 
   if (isLoading) {
     return <div>Loading cities...</div>;
