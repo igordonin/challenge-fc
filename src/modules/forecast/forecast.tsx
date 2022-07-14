@@ -1,5 +1,7 @@
+import * as React from 'react';
 import { useCityStore } from '../cities';
 import { Cities } from '../cities';
+import { fetchRandomCities } from '../cities/city.queries';
 import {
   FlexFooter,
   FlexMain,
@@ -12,8 +14,19 @@ const NoSelectedCity = () => {
   return <h1>Pick a city to see the full forecast</h1>;
 };
 
+const LoadingCities = () => <h1>Loading Cities</h1>;
+
 export const Forecast = () => {
-  const { selectedCity } = useCityStore();
+  const { selectedCity, cities, setCities } = useCityStore();
+
+  React.useEffect(() => {
+    const doRequest = async () => {
+      const cities = await fetchRandomCities();
+      setCities(cities);
+    };
+
+    doRequest();
+  }, []);
 
   return (
     <FlexWrapper>
@@ -22,6 +35,7 @@ export const Forecast = () => {
         {!selectedCity && <NoSelectedCity />}
       </FlexMain>
       <FlexFooter>
+        {!cities.length && <LoadingCities />}
         <GridContainer>
           <Cities />
         </GridContainer>
