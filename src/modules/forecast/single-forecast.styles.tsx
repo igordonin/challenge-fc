@@ -9,6 +9,7 @@ export const SingleForecastContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   align-items: center;
+  text-align: center;
 `;
 
 export const SingleForecastLeftBox = styled.div`
