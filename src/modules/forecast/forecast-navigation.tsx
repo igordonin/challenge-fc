@@ -1,3 +1,4 @@
+import { Link, useNavigate } from 'react-router-dom';
 import {
   ForecastButton,
   ForecastButtonContainerTitle,
@@ -5,12 +6,16 @@ import {
 } from './forecast-navigation.styles';
 
 export const ForecastNavigation = () => {
+  const navigate = useNavigate();
+
   return (
     <>
       <ForecastButtonContainerTitle>Forecast</ForecastButtonContainerTitle>
       <ForecastButtonsContainer>
-        <ForecastButton>Now</ForecastButton>
-        <ForecastButton>7 Days</ForecastButton>
+        <ForecastButton onClick={() => navigate('/')}>Now</ForecastButton>
+        <ForecastButton onClick={() => navigate('/7days')}>
+          7 Days
+        </ForecastButton>
       </ForecastButtonsContainer>
     </>
   );
