@@ -4,24 +4,29 @@ interface ForecastWeather {
   icon: string; // ?? 02d
 }
 
-interface ForecastMain {
-  temp: number;
-  feels_like: number;
-  temp_min: number;
-  temp_max: number;
-  pressure: number;
-  humidity: number;
+interface ForecastCurrent {
+  sunrise: number; //1657708032;
+  sunset: number; //1657761923;
+  temp: number; //294.48;
+  feels_like: number; //294.47;
+  pressure: number; //1018;
+  humidity: number; //69;
+  weather: ForecastWeather[];
 }
 
-interface ForecastSys {
-  type: number; // 2
-  sunrise: number; // 1657708021;
-  sunset: number; //1657761917;
+interface ForecastDayTemp {
+  min: number;
+  max: number;
+}
+
+interface ForecastDay {
+  temp: ForecastDayTemp;
+  weather: ForecastWeather[];
 }
 
 export interface ForecastResult {
-  weather: ForecastWeather[];
-  main: ForecastMain;
-  sys: ForecastSys;
-  timezone: number; //-18000;
+  timezone: string; //-"America/Chicago";
+  timezone_offset: number; //-18000;
+  current: ForecastCurrent;
+  daily: ForecastDay[];
 }

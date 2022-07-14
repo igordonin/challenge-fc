@@ -10,15 +10,33 @@ import {
 import { ReactComponent as SunsetIcon } from '../../assets/weather-sunset.svg';
 import { useQuery } from 'react-query';
 import { fetchForecast } from './forecast.queries';
+import { ForecastResult } from './forecast.types';
+import { convertToTimezoneTime, convertToTime } from '../../utils/date-fns';
 
-const Details = () => {
+interface DetailsProps {
+  forecast: ForecastResult;
+}
+
+const Details = ({ forecast }: DetailsProps) => {
+  const { current } = forecast;
+
+  const sunrise = convertToTimezoneTime(
+    new Date(current.sunrise * 1000),
+    forecast.timezone
+  );
+
+  const sunset = convertToTimezoneTime(
+    new Date(current.sunset * 1000),
+    forecast.timezone
+  );
+
   return (
     <div>
-      Temp: 78º <br />
-      Feels Like 80º <br />
-      Humidity: 100% <br />
-      Sunrise: 6:48 AM <br />
-      Sunset: 7:23 PM
+      <div>Temp: {current.temp}º</div>
+      <div>Feels Like: {current.feels_like}º</div>
+      <div>Humidity: {current.humidity}%</div>
+      <div>Sunrise: {sunrise}</div>
+      <div>Sunset: {sunset}</div>
     </div>
   );
 };
@@ -30,20 +48,19 @@ export const SingleForecast = () => {
     throw new Error('Should only be rendered when a city is selected.');
   }
 
-  const { data, isLoading, isError } = useQuery(
-    ['forecasts', selectedCity],
-    () => fetchForecast(selectedCity.name, selectedCity.country)
-  );
+  const {
+    data: forecast,
+    isLoading,
+    isError,
+  } = useQuery(['forecast', selectedCity], () => fetchForecast(selectedCity));
 
   if (isLoading) {
     return <div>Loading...</div>;
   }
 
-  if (isError) {
+  if (isError || !forecast) {
     return <div>Error</div>;
   }
-
-  const forecast = data || {};
 
   return (
     <>
@@ -60,7 +77,7 @@ export const SingleForecast = () => {
       </FlexContainer>
       <Relative>
         <FloatRight>
-          <Details />
+          <Details forecast={forecast} />
         </FloatRight>
       </Relative>
     </>
