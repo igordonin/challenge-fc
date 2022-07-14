@@ -1,2 +1,2 @@
-export * from './forecast';
+export * from '../../components/forecast';
 export * from './single-forecast';

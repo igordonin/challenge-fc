@@ -1,14 +1,14 @@
 import * as React from 'react';
-import { useCityStore } from '../cities';
-import { Cities } from '../cities';
-import { fetchRandomCities } from '../cities/city.queries';
+import { useCityStore } from '../modules/cities';
+import { Cities } from '../modules/cities';
+import { fetchRandomCities } from '../modules/cities/city.queries';
 import {
   FlexFooter,
   FlexMain,
   FlexWrapper,
   GridContainer,
 } from './forecast.styles';
-import { SingleForecast } from './single-forecast';
+import { SingleForecast } from '../modules/forecast/single-forecast';
 
 const NoSelectedCity = () => {
   return <h1>Pick a city to see the full forecast</h1>;
