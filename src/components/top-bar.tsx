@@ -12,6 +12,7 @@ import {
 } from './top-bar.styles';
 import { useSettingsStore } from '../modules/settings';
 import { ReactComponent as CloseIcon } from '../assets/close-circle.svg';
+import { CityResult, useCityStore } from '../modules/cities';
 
 export const TopBar = () => {
   const searchInputEl = React.useRef<HTMLInputElement>(null);
@@ -58,6 +59,22 @@ export const TopBar = () => {
     toggleModal();
   };
 
+  const { cities, selectCity } = useCityStore();
+
+  const [query, setQuery] = React.useState('');
+
+  const handleEnter = (e: React.KeyboardEvent) => {
+    if (e.code === 'Enter') {
+      const matchingCities = cities.filter((city: CityResult) => {
+        return city.name.toLowerCase().includes(query.toLowerCase());
+      });
+
+      if (matchingCities.length === 1) {
+        selectCity(matchingCities[0]);
+      }
+    }
+  };
+
   return (
     <MenuWrapper>
       <MenuLeft>
@@ -83,6 +100,9 @@ export const TopBar = () => {
               type={'text'}
               placeholder={'Search'}
               ref={searchInputEl}
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              onKeyUp={handleEnter}
             />
             <MenuLink href="#" onClick={showSearchInput}>
               Search
