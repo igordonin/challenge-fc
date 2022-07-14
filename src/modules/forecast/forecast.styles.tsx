@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const FlexWrapper = styled.div`
   display: flex;
   flex-flow: column;
-  height: 90vh;
+  height: 89vh;
 `;
 
 export const FlexMain = styled.div`
@@ -15,7 +15,7 @@ export const FlexMain = styled.div`
 `;
 
 export const FlexFooter = styled.div`
-  min-height: 200px;
+  min-height: 120px;
 `;
 
 export const GridContainer = styled.div`

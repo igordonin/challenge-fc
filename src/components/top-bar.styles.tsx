@@ -6,6 +6,7 @@ export const MenuWrapper = styled.ul`
   padding: 0;
   overflow: hidden;
   background-color: #000;
+  height: 8vh;
 `;
 
 export const MenuLeft = styled.li`
