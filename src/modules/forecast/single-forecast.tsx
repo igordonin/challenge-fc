@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { useCityStore } from '../cities';
 import {
-  FlexContainer,
-  FlexItem,
-  FloatRight,
-  Relative,
+  NavigationGridItem,
+  SingleForecastContainer,
+  SingleForecastLeftBox,
+  SingleForecastRightBox,
   Title,
 } from './single-forecast.styles';
 import { useQuery } from 'react-query';
@@ -12,6 +12,7 @@ import { fetchForecast } from './forecast.queries';
 import { getWeatherIcon } from './utils/forecast.utils';
 import { ForecastDetails } from './single-forecast-details';
 import { useSettingsStore } from '../settings';
+import { ForecastNavigation } from './forecast-navigation';
 
 export const SingleForecast = () => {
   const { selectedCity } = useCityStore();
@@ -41,22 +42,21 @@ export const SingleForecast = () => {
 
   return (
     <>
-      <FlexContainer>
-        <FlexItem>
+      <SingleForecastContainer>
+        <SingleForecastLeftBox>
           <Title>{selectedCity.name}</Title>
-        </FlexItem>
-        <FlexItem>
           <Icon fill={color} width={150} height={'100%'} />
-        </FlexItem>
-        <FlexItem>
           <Title>{forecast.current.weather[0].description}</Title>
-        </FlexItem>
-      </FlexContainer>
-      <Relative>
-        <FloatRight>
+        </SingleForecastLeftBox>
+
+        <SingleForecastRightBox>
           <ForecastDetails forecast={forecast} />
-        </FloatRight>
-      </Relative>
+        </SingleForecastRightBox>
+
+        <NavigationGridItem>
+          <ForecastNavigation />
+        </NavigationGridItem>
+      </SingleForecastContainer>
     </>
   );
 };

@@ -1,26 +1,26 @@
 import styled from 'styled-components';
 
-export const FlexContainer = styled.div`
-  display: flex;
-  position: absolute;
-  flex-flow: column;
-  align-items: center;
-`;
-
-export const FlexItem = styled.div`
-  flex: 1;
-`;
-
-export const Title = styled.h1`
+export const Title = styled.h3`
   margin: 0;
   text-transform: capitalize;
 `;
 
-export const Relative = styled.div`
-  position: relative;
-  left: 150px;
+export const SingleForecastContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  text-align: center;
 `;
 
-export const FloatRight = styled.div`
-  float: right;
+export const SingleForecastLeftBox = styled.div`
+  grid-column: 2/3;
+`;
+
+export const SingleForecastRightBox = styled.div`
+  grid-column: 3/3;
+  text-align: left;
+`;
+
+export const NavigationGridItem = styled.div`
+  grid-column: 2/3;
 `;

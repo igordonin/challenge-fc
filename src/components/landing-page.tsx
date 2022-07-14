@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Outlet } from 'react-router-dom';
 import { useCityStore } from '../modules/cities';
 import { Cities } from '../modules/cities';
 import { fetchRandomCities } from '../modules/cities/city.queries';
@@ -8,8 +9,6 @@ import {
   FlexWrapper,
   GridContainer,
 } from './landing-page.styles';
-import { SingleForecast } from '../modules/forecast/single-forecast';
-import { Outlet } from 'react-router-dom';
 
 const NoSelectedCity = () => {
   return <h1>Pick a city to see the full forecast</h1>;

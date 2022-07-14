@@ -1,5 +1,5 @@
+import { Button } from '../../components/button';
 import { useCityStore } from './city-store';
-import { CityButton } from './city.styles';
 import { CityResult } from './city.types';
 
 interface CityProps {
@@ -12,8 +12,8 @@ export const City = ({ city }: CityProps) => {
   const className = selectedCity?.name === city.name ? 'active' : '';
 
   return (
-    <CityButton className={className} onClick={() => selectCity(city)}>
+    <Button className={className} onClick={() => selectCity(city)}>
       {city.name}
-    </CityButton>
+    </Button>
   );
 };
