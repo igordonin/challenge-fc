@@ -9,37 +9,8 @@ import {
 } from './single-forecast.styles';
 import { useQuery } from 'react-query';
 import { fetchForecast } from './forecast.queries';
-import { ForecastResult } from './forecast.types';
-import { convertToTimezoneTime } from '../../utils/date-fns';
 import { getWeatherIcon } from './utils/forecast.utils';
-
-interface DetailsProps {
-  forecast: ForecastResult;
-}
-
-const Details = ({ forecast }: DetailsProps) => {
-  const { current } = forecast;
-
-  const sunrise = convertToTimezoneTime(
-    new Date(current.sunrise * 1000),
-    forecast.timezone
-  );
-
-  const sunset = convertToTimezoneTime(
-    new Date(current.sunset * 1000),
-    forecast.timezone
-  );
-
-  return (
-    <div>
-      <div>Temp: {current.temp}º</div>
-      <div>Feels Like: {current.feels_like}º</div>
-      <div>Humidity: {current.humidity}%</div>
-      <div>Sunrise: {sunrise}</div>
-      <div>Sunset: {sunset}</div>
-    </div>
-  );
-};
+import { ForecastDetails } from './single-forecast-details';
 
 export const SingleForecast = () => {
   const { selectedCity } = useCityStore();
@@ -79,7 +50,7 @@ export const SingleForecast = () => {
       </FlexContainer>
       <Relative>
         <FloatRight>
-          <Details forecast={forecast} />
+          <ForecastDetails forecast={forecast} />
         </FloatRight>
       </Relative>
     </>
