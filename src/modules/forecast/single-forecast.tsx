@@ -11,7 +11,7 @@ import { useQuery } from 'react-query';
 import { fetchForecast } from './forecast.queries';
 import { ForecastResult } from './forecast.types';
 import { convertToTimezoneTime } from '../../utils/date-fns';
-import { getWeatherIcon } from './forecast.utils';
+import { getWeatherIcon } from './utils/forecast.utils';
 
 interface DetailsProps {
   forecast: ForecastResult;

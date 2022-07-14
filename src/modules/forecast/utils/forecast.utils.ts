@@ -1,5 +1,5 @@
 import React, { SVGProps } from 'react';
-import { ForecastResult } from './forecast.types';
+import { ForecastResult } from '../forecast.types';
 import { ReactComponent as WeatherCloudyIcon } from '../../assets/weather/weather-cloudy.svg';
 import { ReactComponent as WeatherFogIcon } from '../../assets/weather/weather-fog.svg';
 import { ReactComponent as WeatherHailIcon } from '../../assets/weather/weather-hail.svg';
