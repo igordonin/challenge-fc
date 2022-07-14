@@ -1,4 +1,5 @@
 interface ForecastWeather {
+  id: number;
   main: string; // Clouds
   description: string; // ?? few clouds
   icon: string; // ?? 02d

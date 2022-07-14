@@ -7,11 +7,11 @@ import {
   Relative,
   Title,
 } from './single-forecast.styles';
-import { ReactComponent as SunsetIcon } from '../../assets/weather-sunset.svg';
 import { useQuery } from 'react-query';
 import { fetchForecast } from './forecast.queries';
 import { ForecastResult } from './forecast.types';
-import { convertToTimezoneTime, convertToTime } from '../../utils/date-fns';
+import { convertToTimezoneTime } from '../../utils/date-fns';
+import { getWeatherIcon } from './forecast.utils';
 
 interface DetailsProps {
   forecast: ForecastResult;
@@ -62,6 +62,8 @@ export const SingleForecast = () => {
     return <div>Error</div>;
   }
 
+  const { icon: Icon, color } = getWeatherIcon(forecast!);
+
   return (
     <>
       <FlexContainer>
@@ -69,10 +71,10 @@ export const SingleForecast = () => {
           <Title>{selectedCity.name}</Title>
         </FlexItem>
         <FlexItem>
-          <SunsetIcon fill="#ffd60a" width={150} height={'100%'} />
+          <Icon fill={color} width={150} height={'100%'} />
         </FlexItem>
         <FlexItem>
-          <Title>Sunset</Title>
+          <Title>{forecast.current.weather[0].description}</Title>
         </FlexItem>
       </FlexContainer>
       <Relative>

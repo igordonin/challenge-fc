@@ -13,6 +13,7 @@ export const FlexItem = styled.div`
 
 export const Title = styled.h1`
   margin: 0;
+  text-transform: capitalize;
 `;
 
 export const Relative = styled.div`
