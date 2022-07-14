@@ -11,9 +11,11 @@ import { useQuery } from 'react-query';
 import { fetchForecast } from './forecast.queries';
 import { getWeatherIcon } from './utils/forecast.utils';
 import { ForecastDetails } from './single-forecast-details';
+import { useSettingsStore } from '../settings';
 
 export const SingleForecast = () => {
   const { selectedCity } = useCityStore();
+  const { measurementSystem } = useSettingsStore();
 
   if (!selectedCity) {
     throw new Error('Should only be rendered when a city is selected.');
@@ -23,7 +25,9 @@ export const SingleForecast = () => {
     data: forecast,
     isLoading,
     isError,
-  } = useQuery(['forecast', selectedCity], () => fetchForecast(selectedCity));
+  } = useQuery(['forecast', selectedCity, measurementSystem], () =>
+    fetchForecast(selectedCity, measurementSystem)
+  );
 
   if (isLoading) {
     return <div>Loading...</div>;
