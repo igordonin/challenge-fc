@@ -28,9 +28,7 @@ export const fetchForecast = async (
   city: CityResult
 ): Promise<ForecastResult> => {
   const baseUrl = process.env.REACT_APP_OPEN_WEATHER_BASE_URL!;
-
   const urlParams = createUrlParams(city);
-  console.log({ urlParams });
 
   const { data } = await axios.get(`${baseUrl}?${urlParams}`);
 
