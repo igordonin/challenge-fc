@@ -66,7 +66,7 @@ export const SettingsModal = () => {
     <ModalOverlay className={modalClassName}>
       <ModalWrapper>
         <SettingsModalFlexWrapper>
-          <ModalTitle>Settings</ModalTitle>
+          <ModalTitle data-testid="settings-modal-title">Settings</ModalTitle>
 
           <ConfigGroup>
             <h2>Units</h2>

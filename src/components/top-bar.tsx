@@ -107,7 +107,7 @@ export const TopBar = () => {
             <MenuLink href="#" onClick={showSearchInput}>
               Search
             </MenuLink>
-            <IconWrapper ref={clearSearchEl}>
+            <IconWrapper ref={clearSearchEl} data-testid="close-search-icon">
               <CloseIcon fill="#fff" href="#" onClick={hideSearchInput} />
             </IconWrapper>
           </MenuText>

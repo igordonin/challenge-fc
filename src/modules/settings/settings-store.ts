@@ -23,7 +23,7 @@ interface SettingsStore {
 export const useSettingsStore = create<SettingsStore>((set) => ({
   isModalOpen: false,
   clockAmPmOr24h: ClockSettings.AM_PM,
-  measurementSystem: MeasurementSystemSettings.IMPERIAL,
+  measurementSystem: MeasurementSystemSettings.STANDARD,
   toggleModal: () => {
     set((state: SettingsStore): SettingsStore => {
       return {
