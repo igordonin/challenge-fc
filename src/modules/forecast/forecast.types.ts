@@ -1,17 +1,17 @@
-interface ForecastWeather {
+export interface ForecastWeather {
   id: number;
-  main: string; // Clouds
-  description: string; // ?? few clouds
-  icon: string; // ?? 02d
+  main: string;
+  description: string;
+  icon: string;
 }
 
 interface ForecastCurrent {
-  sunrise: number; //1657708032;
-  sunset: number; //1657761923;
-  temp: number; //294.48;
-  feels_like: number; //294.47;
-  pressure: number; //1018;
-  humidity: number; //69;
+  sunrise: number;
+  sunset: number;
+  temp: number;
+  feels_like: number;
+  pressure: number;
+  humidity: number;
   weather: ForecastWeather[];
 }
 
@@ -20,14 +20,15 @@ interface ForecastDayTemp {
   max: number;
 }
 
-interface ForecastDay {
+export interface ForecastDay {
+  dt: number;
   temp: ForecastDayTemp;
   weather: ForecastWeather[];
 }
 
 export interface ForecastResult {
-  timezone: string; //-"America/Chicago";
-  timezone_offset: number; //-18000;
+  timezone: string;
+  timezone_offset: number;
   current: ForecastCurrent;
   daily: ForecastDay[];
 }

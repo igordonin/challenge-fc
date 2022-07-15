@@ -8,12 +8,13 @@ export const ForecastButton = styled(Button)`
 `;
 
 export const ForecastButtonContainerTitle = styled.h4`
-  margin: 20px 0 10px 0;
+  margin: 10px 0 10px 0;
+  padding: 10px 0 0;
   text-align: center;
 `;
 
 export const ForecastButtonsContainer = styled.div`
-  display: grid;
+  display: inline-grid;
   margin-top: 5px;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 10px;

@@ -1,12 +1,8 @@
-import { ForecastResult } from '../forecast.types';
+import { ForecastWeather } from '../forecast.types';
 import { weatherCodesMappings } from './weather-codes-mappings';
 import { WeatherIconProps } from './weather-icon-pair';
 
-export const getWeatherIcon = (forecast: ForecastResult): WeatherIconProps => {
-  const { current } = forecast;
-  const [weather] = current.weather;
-
+export const getWeatherIcon = (weather: ForecastWeather): WeatherIconProps => {
   const key = `${weather.id}|${weather.icon}`;
-
   return weatherCodesMappings[key];
 };

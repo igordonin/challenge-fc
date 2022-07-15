@@ -38,7 +38,7 @@ export const SingleForecast = () => {
     return <div>Error</div>;
   }
 
-  const { icon: Icon, color } = getWeatherIcon(forecast!);
+  const { icon: Icon, color } = getWeatherIcon(forecast!.current.weather[0]);
 
   return (
     <>
